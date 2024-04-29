@@ -67,11 +67,11 @@ Q, R = np.linalg.qr(A)
 least_squares = np.linalg.solve(R, np.dot(Q.T, b))
 
 # Displaying the results
-print("The solution to the weighted least squares problem is:\n", least_squares)
+print("The solution to the weighted least squares problem is:\n", least_squares) # Part A
 
 # Predicting Malignancy of validate and train data
-training_results = predict_cancer(A, least_squares)
-validate_results = predict_cancer(val_A, least_squares)
+training_results = predict_cancer(A, least_squares) # Part B
+validate_results = predict_cancer(val_A, least_squares) # Part B
 
 # Defining variables to keep track of positive and negative results for train and validate data
 apos = 0
@@ -92,6 +92,7 @@ for i in validate_results:
         neg += 1
 
 # Displaying the percentage of negatives in the train and validate dataset
-print("\nTrain data negatives: ", aneg / (aneg + apos))
-print("Validate data negatives: ", neg / (neg + pos))
-print("\nThe validate dataset has a lower success rate than the train data.\n")
+print("\nTrain data positives: ", apos / (aneg + apos)) # Part C
+print("Validate data negatives: ", neg / (neg + pos)) # Part C
+print("\nThe validate dataset has a much higher incorrect percentage,"
+      " therefore having a lower success rate than the training data.\n")

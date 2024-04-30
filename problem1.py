@@ -42,6 +42,24 @@ print(predicted_malignancy)
 # Problem 1c) What is the percentage of samples that are incorrectly classified?
 # Is it greater or smaller than the success rate on the training data?
 
+def percentage_error(x,y):
+    if len(x) == len(y):
+        counter = 0
+        for i in range(len(y)):
+            if x[i] != y[i]:
+                counter += 1
+        return counter/len(x)
+    else:
+        return -1
+
+print("Success rate of linear model applied to validate data:")
+print(1 - percentage_error(predicted_malignancy,actual_malignancy))
+print("Success rate of linear model applied to training data:")
+predicted_malignancy_train_data = A * least_squares
+predicted_malignancy_train_data = classifier(predicted_malignancy_train_data)
+print(1 - percentage_error(predicted_malignancy_train_data, b))
+print("The linear model has a greater success rate on validate data than the training data")
+
 
 # Setting up the least squares solution (A_t * A * x_hat = A_t * b)
 # A_t = A.transpose()

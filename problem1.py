@@ -4,6 +4,8 @@ A, b = read_training_data("train.data")
 
 # Problem 1a) Use the QR algorithm to find the least-squares linear model for the data.
 
+# y = c0x_0 + c1x_1 + .... cn*x_n
+
 # QR Factorization is just rewriting A = QR,
 # where Q is an orthonormal basis for Col(A)
 # and R is a triangular invertible matrix with positive diagonal entries.
@@ -16,7 +18,7 @@ R_inv = R.inv()
 Q_t = Q.T
 least_squares = R_inv * Q_t * b # Could also have used A.QRSolve(b)
 
-# print(least_squares)
+print(least_squares)
 
 # Problem 1b) Use the linear model from (a) to the data set validate.data
 # and predict the malignancy of the tissues. You will have to define a
@@ -33,7 +35,6 @@ def classifier(y):
             y[i] = 1
         else:
             y[i] = -1
-    
     return y
 
 predicted_malignancy = classifier(predicted_malignancy)
@@ -59,37 +60,3 @@ predicted_malignancy_train_data = A * least_squares
 predicted_malignancy_train_data = classifier(predicted_malignancy_train_data)
 print(1 - percentage_error(predicted_malignancy_train_data, b))
 print("The linear model has a greater success rate on validate data than the training data")
-
-
-# Setting up the least squares solution (A_t * A * x_hat = A_t * b)
-# A_t = A.transpose()
-# lhs = A_t*A
-# rhs = A_t*b
-# concat = (lhs.row_join(rhs))
-# concat = concat.rref()
-#print(concat)
-
-# coefficients_list = [] #will contain the coefficients for our linear model
-
-# output the equation for the linear model
-# print("Linear model: y = ", end="")
-# for i in range(len(concat[1])):
-#     print((concat[0])[i,len(concat[1])], end="")
-#     coefficients_list.append((concat[0])[i,len(concat[1])])
-#     print("x", end="")
-#     print(i, end="")
-#     if i != (len(concat[1]) - 1):
-#         print(" + ", end="")
-
-# print("\n\nList of coefficients:\n")
-# print(coefficients_list)
-# print()
-
-
-# for i in range(A.shape[0]):
-#     for j in range(A.shape[1]):
-#         print(str(i) + " " + str(j))
-
-
-
-

@@ -93,6 +93,10 @@ for i in validate_results:
 
 # Displaying the percentage of negatives in the train and validate dataset
 print("\nTrain data positives: ", apos / (aneg + apos)) # Part C
+print("Train data negatives: ", aneg / (aneg + apos)) # Part C
+
+print("\nValidate data positives: ", pos / (neg + pos)) # Part C
 print("Validate data negatives: ", neg / (neg + pos)) # Part C
+
 print("\nThe validate dataset has a much higher incorrect percentage,"
       " therefore having a lower success rate than the training data.\n")
